@@ -18,9 +18,14 @@ EOF
 
 cp .vimrc ../.vimrc;
 cp .zshrc ../.zshrc;
+if [ ! -d ../.oh-my-zsh ]
+	then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
+	chsh -s $(which zsh);
+fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
-chsh -s $(which zsh);
+if [ ! ../.vim ]
+	plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-sh -c "$(curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)";
+	then curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${plug_url}
+fi	
