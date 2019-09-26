@@ -25,7 +25,6 @@ if [ ! -d ../.oh-my-zsh ]
 fi
 
 if [ ! ../.vim ]
-	plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-
-	then curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${plug_url}
+	then plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${plug_url}
 fi	
