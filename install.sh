@@ -12,7 +12,7 @@ zsh
 vim
 build-essential
 cmake
-pyhton3-dev
+python3-dev
 vim-python-jedi
 EOF); 
 
