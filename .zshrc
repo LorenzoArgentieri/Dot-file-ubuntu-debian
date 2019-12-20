@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sierda/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -83,9 +83,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 #virtualenv setup for virtualenv location e homeproject
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/Projects"
-source $HOME/.local/bin/virtualenvwrapper.sh
+#export WORKON_HOME="$HOME/.virtualenvs"
+#export PROJECT_HOME="$HOME/Projects"
+#source $HOME/.local/bin/virtualenvwrapper.sh
 
 #save history in cache
 

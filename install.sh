@@ -7,17 +7,27 @@ set -e
 sudo apt-get -y update \
 && sudo apt-get -y install $(cat - <<EOF 
 curl 
+wget
 zsh
-vim
+vim-gtk3
 build-essential
 cmake
 python3-dev
 vim-python-jedi
+i3
+terminator
+zathura
+zathura-cb
+zathura-djvu
+zathura-pdf-poppler
+zathura-ps
+ranger
+virtualbox
 EOF
 );
 
-cp .vimrc ~/.vimrc;
-cp .zshrc ~/.zshrc;
+cp .vimrc ~/.vimrc 
+cp .zshrc ~/.zshrc 
 
 #install oh my zsh
 if [ ! -d ~/.oh-my-zsh ]
@@ -36,3 +46,6 @@ if [ ! -d ~/.vim && ! -f ~/.vim/autoload/plug.vim ]
 	plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${plug_url};
 fi
+
+source ~/.zshrc
+source ~/.vimrc
