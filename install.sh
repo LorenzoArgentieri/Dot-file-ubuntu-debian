@@ -23,6 +23,9 @@ zathura-pdf-poppler
 zathura-ps
 ranger
 virtualbox
+p7zip
+p7zip-full
+p7zip-rar
 EOF
 );
 
