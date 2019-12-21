@@ -51,4 +51,4 @@ fi
 
 source ~/.zshrc
 source ~/.vimrc
-vim -c PlugUpdate PlugInstall 
+
