@@ -51,4 +51,4 @@ fi
 
 source ~/.zshrc
 source ~/.vimrc
-
+i3-config-wizard
