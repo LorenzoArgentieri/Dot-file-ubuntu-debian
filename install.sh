@@ -9,12 +9,16 @@ sudo apt-get -y update \
 build-essential
 cmake
 curl 
+feh
 i3
 p7zip
 p7zip-full
 p7zip-rar
+pulseeffects
 python3-dev
 ranger
+s-tui
+stress
 terminator
 tree
 vim-gtk3
@@ -32,6 +36,7 @@ EOF
 
 cp .vimrc ~/.vimrc 
 cp .zshrc ~/.zshrc 
+cat ./pulse-default.pa >> /etc/pulse/default.pa
 
 #install oh my zsh
 if [ ! -d ~/.oh-my-zsh ]
@@ -51,4 +56,6 @@ if [ ! -f ~/.vim/autoload/plug.vim ]
 fi
 
 i3-config-wizard
-
+cat ./i3conf >> $HOME/.config/i3/config
+#sed -i '/^bar/d' $HOME/.config/i2/config
+sudo bash ./kde-i3.sh
