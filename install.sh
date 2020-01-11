@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 set -e
 
 #install dipendencies for programs
