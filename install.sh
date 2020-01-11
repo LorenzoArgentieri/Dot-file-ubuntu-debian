@@ -21,6 +21,7 @@ s-tui
 stress
 terminator
 tree
+vim-doc
 vim-gtk3
 vim-python-jedi
 virtualbox
@@ -31,12 +32,13 @@ zathura-djvu
 zathura-pdf-poppler
 zathura-ps
 zsh
+zsh-doc
 EOF
 );
 
 cp .vimrc ~/.vimrc 
 cp .zshrc ~/.zshrc 
-cat ./pulse-default.pa >> /etc/pulse/default.pa
+##cat ./pulse-default.pa >> /etc/pulse/default.pa
 
 #install oh my zsh
 if [ ! -d ~/.oh-my-zsh ]
