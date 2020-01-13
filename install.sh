@@ -19,6 +19,7 @@ ranger
 s-tui
 stress
 terminator
+timeshift
 tree
 vim-doc
 vim-gtk3
