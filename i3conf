@@ -10,3 +10,5 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="plasma-desktop"] floating enable; border none
 for_window [title="win7"] floating enable; border none
 no_focus [class="plasmashell" window_type="on_screen_display"]
+
+exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg

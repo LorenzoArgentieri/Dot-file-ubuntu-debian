@@ -36,8 +36,9 @@ zsh-doc
 EOF
 );
 
-cp .vimrc ~/.vimrc 
-cp .zshrc ~/.zshrc 
+cp .vimrc $HOME/.vimrc 
+cp .zshrc $HOME/.zshrc 
+cp "bg.jpg" "$HOME/Pictures/bg.jpg"
 ##cat ./pulse-default.pa >> /etc/pulse/default.pa
 
 #install oh my zsh
@@ -59,5 +60,5 @@ fi
 
 i3-config-wizard
 cat ./i3conf >> $HOME/.config/i3/config
-#sed -i '/^bar/d' $HOME/.config/i2/config
+#sed -i '/^bar/d' $HOME/.config/i3/config
 sudo bash ./kde-i3.sh
