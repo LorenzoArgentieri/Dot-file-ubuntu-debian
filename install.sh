@@ -8,8 +8,6 @@ sudo apt-get -y update \
 build-essential
 cmake
 curl 
-feh
-i3
 p7zip
 p7zip-full
 p7zip-rar
@@ -21,6 +19,7 @@ stress
 terminator
 timeshift
 tree
+tmux
 vim-doc
 vim-gtk3
 vim-python-jedi
@@ -36,9 +35,8 @@ zsh-doc
 EOF
 );
 
-cp .vimrc $HOME/.vimrc 
-cp .zshrc $HOME/.zshrc 
-cp "bg.jpg" "$HOME/Pictures/bg.jpg"
+cp vimrc $HOME/.vimrc 
+cp zshrc $HOME/.zshrc 
 ##cat ./pulse-default.pa >> /etc/pulse/default.pa
 
 #install oh my zsh
@@ -58,7 +56,15 @@ if [ ! -f ~/.vim/autoload/plug.vim ]
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${plug_url};
 fi
 
-i3-config-wizard
-cat ./i3conf >> $HOME/.config/i3/config
-#sed -i '/^bar/d' $HOME/.config/i3/config
-sudo bash ./kde-i3.sh
+if [ "$(uname -n)" = "ubuntu" ]; then
+	sudo apt-get -y install $(cat - <<EOF 
+	i3
+	feh
+	);
+	i3-config-wizard
+	cat ./i3conf >> $HOME/.config/i3/config
+	#sed -i '/^bar/d' $HOME/.config/i3/config
+	cp bg.jpg $HOME/Pictures/bg.jpg
+	sudo bash ./kde-i3.sh
+fi
+
