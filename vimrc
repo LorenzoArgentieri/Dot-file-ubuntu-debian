@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/plugged')
-
+Plug 'junegunn/fzf'
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py' }
 Plug 'davidhalter/jedi-vim', {'for' : ['python','python2','python3']}

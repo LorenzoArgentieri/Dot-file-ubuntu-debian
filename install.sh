@@ -8,6 +8,7 @@ sudo apt-get -y update \
 build-essential
 cmake
 curl 
+fzf
 p7zip
 p7zip-full
 p7zip-rar
@@ -18,8 +19,8 @@ s-tui
 stress
 terminator
 timeshift
-tree
 tmux
+tree
 vim-doc
 vim-gtk3
 vim-python-jedi
