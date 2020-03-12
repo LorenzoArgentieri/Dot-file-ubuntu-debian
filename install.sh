@@ -42,10 +42,11 @@ cp zshrc $HOME/.zshrc
 #install oh my zsh
 if [ ! -d ~/.oh-my-zsh ]
 	then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && \
 	chsh -s $(which zsh);
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 fi
 
 
@@ -58,9 +59,10 @@ fi
 
 if [ "$(uname -n)" = "ubuntu" ]; then
 	sudo apt-get -y install $(cat - <<EOF 
-	i3
-	feh
-	);
+i3
+feh
+EOF
+);
 	i3-config-wizard
 	cat ./i3conf >> $HOME/.config/i3/config
 	#sed -i '/^bar/d' $HOME/.config/i3/config

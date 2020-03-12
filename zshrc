@@ -71,6 +71,7 @@ ZSH_THEME="minimal"
 plugins=(git
 	git-prompt
 	zsh-autosuggestions
+	history-substring-search
 	zsh-syntax-highlighting
 	)
 
