@@ -15,6 +15,7 @@ p7zip-rar
 pulseeffects
 python3-dev
 ranger
+ripgrep
 s-tui
 stress
 terminator
