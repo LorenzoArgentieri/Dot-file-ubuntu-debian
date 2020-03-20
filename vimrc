@@ -12,24 +12,6 @@ syntax on
 
 let mapleader=","
 
-inoremap jk <esc>
-inoremap <esc> <nop>
-
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-
-vnoremap <Up> <nop>
-vnoremap <Down> <nop>
-vnoremap <Left> <nop>
-vnoremap <Right> <nop>
-
 " set pyhton path
 let g:python3_host_prog = "/usr/bin/python3"
 let g:python_host_prog = "/usr/bin/python2"
@@ -39,7 +21,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_python_binary_path='python3'
 
 " python config
-
 au BufNewFile,BufRead *.py,*.pyw
 	\ highlight ExtraWhitespace ctermbg=red
 	\| match ExtraWhitespace /\s\+$/
