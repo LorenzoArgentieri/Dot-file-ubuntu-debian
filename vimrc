@@ -8,9 +8,12 @@ call plug#end()
 set number
 set relativenumber
 set nocompatible
+set noexpandtab
 syntax on
 
 let mapleader=","
+
+inoremap jk <Esc>
 
 " set pyhton path
 let g:python3_host_prog = "/usr/bin/python3"
