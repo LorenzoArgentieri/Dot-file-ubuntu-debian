@@ -40,21 +40,19 @@ let g:ycm_python_binary_path='python3'
 
 " python config
 
-au BufNewFile,BufRead *.py,*.pyw 
-	\ highlight ExtraWhitespace ctermbg=red
-	\|match ExtraWhitespace /\s\+$/ 
-
 au BufNewFile,BufRead *.py,*.pyw
-	\ setlocal foldmethod=indent
-	\|setlocal foldlevel=99
-	\|setlocal tabstop=4
-	\|setlocal softtabstop=4
-	\|setlocal shiftwidth=4
-	\|setlocal textwidth=79
-	\|setlocal expandtab
-	\|setlocal autoindent
-	\|setlocal fileformat=unix
-	\|setlocal encoding=utf-8
+	\ highlight ExtraWhitespace ctermbg=red
+	\| match ExtraWhitespace /\s\+$/
+	\| setlocal foldmethod=indent
+	\| setlocal foldlevel=99
+	\| setlocal tabstop=4
+	\| setlocal softtabstop=4
+	\| setlocal shiftwidth=4
+	\| setlocal textwidth=79
+	\| setlocal noexpandtab
+	\| setlocal autoindent
+	\| setlocal fileformat=unix
+	\| setlocal encoding=utf-8
 
 " add virtualenv support
 au BufNewFile,BufRead *.py,*.pyw
@@ -62,7 +60,7 @@ au BufNewFile,BufRead *.py,*.pyw
 	\ import os
 	\ import sys
 	\ if 'VIRTUAL_ENV' in os.environ:
-	\	project_base_dir= os.eviron['VIRTUAL_ENV']
-	\	activate_this = os.path.join(project_base_dir, 'bin/active_this.py')
-	\	execfile(activate_this, dict(__file__=activate_this))
+	\ 	project_base_dir= os.eviron['VIRTUAL_ENV']
+	\ 	activate_this = os.path.join(project_base_dir, 'bin/active_this.py')
+	\ 	execfile(activate_this, dict(__file__=activate_this))
 	\ EOF
