@@ -10,6 +10,10 @@ set relativenumber
 set nocompatible
 set noexpandtab
 syntax on
+set laststatus=2
+set statusline=%.20F
+set statusline+=%=
+set statusline+=%l,%c
 
 let mapleader=","
 
