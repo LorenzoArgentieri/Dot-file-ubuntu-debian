@@ -12,11 +12,8 @@ let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 call plug#begin('~/.config/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --ts-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py' }
 Plug 'davidhalter/jedi-vim', {'for' : ['python','python2','python3']}
-Plug 'prettier/vim-prettier', {
-   \ 'do': 'npm install',
-   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'yaml', 'html'] }
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
 call plug#end()
 " }}}

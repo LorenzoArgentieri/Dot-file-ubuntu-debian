@@ -9,7 +9,6 @@ plugins=(git
 	zsh-autosuggestions
 	history-substring-search
 	zsh-syntax-highlighting
-	zsh-nvm
 	)
 
 source $ZSH/oh-my-zsh.sh
