@@ -23,9 +23,8 @@ timeshift
 tmux
 tree
 vim-doc
-vim-gtk3
+vim-athena
 vim-python-jedi
-virtualbox
 wget
 zathura
 zathura-cb
@@ -39,7 +38,6 @@ EOF
 
 cp vimrc $HOME/.vimrc 
 cp zshrc $HOME/.zshrc 
-##cat ./pulse-default.pa >> /etc/pulse/default.pa
 
 #install oh my zsh
 if [ ! -d ~/.oh-my-zsh ]
