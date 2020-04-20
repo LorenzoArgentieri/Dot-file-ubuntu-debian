@@ -14,7 +14,6 @@ p7zip-full
 i3
 feh
 p7zip-rar
-pulseeffects
 python3-dev
 ranger
 ripgrep
