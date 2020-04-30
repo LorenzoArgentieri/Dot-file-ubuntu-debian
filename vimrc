@@ -109,8 +109,8 @@ augroup front_end_files
 		\| setlocal foldlevelstart=2
 		\| setlocal noexpandtab
 
-	let g:prettier#quickfix_enabled = 0
-	autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+	"let g:prettier#quickfix_enabled = 0
+	"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 augroup END
 " }}}
 

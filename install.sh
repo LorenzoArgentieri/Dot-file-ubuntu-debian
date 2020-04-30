@@ -1,38 +1,17 @@
 #!/usr/bin/bash
 set -e
 
-#install dipendencies for programs
+DIST=$1
 
-sudo apt-get -y update \
-&& sudo apt-get -y install $(cat - <<EOF 
-build-essential
-cmake
-curl 
-fzf
-p7zip
-p7zip-full
-i3
-feh
-p7zip-rar
-python3-dev
-ranger
-ripgrep
-terminator
-tmux
-tree
-vim-doc
-vim-athena
-vim-python-jedi
-wget
-zathura
-zathura-cb
-zathura-djvu
-zathura-pdf-poppler
-zathura-ps
-zsh
-zsh-doc
-EOF
-);
+install() {
+	case $1 in
+		"pop") PROGS="./prog-pop.txt";;
+		"kali") PROGS="./prog-kali.txt";;
+		*) echo "Error option not valid";;
+	esac
+	sudo apt-get -y update \
+	&& sudo apt-get -y install $(cat $PROGS );
+}
 
 vim_conf() {
 	
@@ -73,6 +52,7 @@ zsh_conf() {
 	fi
 }
 
-cd $HOME
-vim_conf
-zsh_conf
+case $DIST in 
+	"kali"|"pop") install $DIST;;
+	"conf") cd $HOME && vim_conf && zsh_conf;;
+	"*") echo "error option not defined" ;;
