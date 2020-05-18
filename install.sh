@@ -56,3 +56,4 @@ case $DIST in
 	"kali"|"pop") install $DIST;;
 	"conf") cd $HOME && vim_conf && zsh_conf;;
 	"*") echo "error option not defined" ;;
+esac
