@@ -36,7 +36,7 @@ zsh_conf() {
 		mkdir $HOME/.config/zsh
 	fi
 	
-	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.config/.zshrc
+	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.config/zsh/.zshrc
 	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.zshenv
 	ln -s $HOME/Dot-file-ubuntu-debian/.profile $HOME/.profile
 
