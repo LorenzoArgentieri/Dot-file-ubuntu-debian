@@ -32,11 +32,11 @@ vim_conf() {
 }
 
 tmux_conf() {
-	if [ ! -d $HOME/.config/tmux ]
+	if [ ! -d $HOME/.tmux ]
 		then
-		mkdir $HOME/.config/tmux
-		ln -s $CDIR/.tmux.conf $HOME/.config/tmux/tmux.conf
-		git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
+		mkdir $HOME/.tmux
+		ln -s $CDIR/.tmux.conf $HOME/.tmux.conf
+		git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 	fi
 }
 zsh_conf() {
