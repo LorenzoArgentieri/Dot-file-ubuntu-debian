@@ -2,6 +2,7 @@
 set -e
 
 DIST=$1
+CDIR=$PWD
 
 install() {
 	case $1 in
@@ -27,8 +28,8 @@ vim_conf() {
 		curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs ${plug_url};
 	fi
 
-	ln -s $HOME/Dot-file-ubuntu-debian/vimrc $HOME/.config/vim/vimrc
-	ln -s $HOME/Dot-file-ubuntu-debian/.tmux.conf $HOME/.tmux.conf
+	ln -s $CDIR/vimrc $HOME/.config/vim/vimrc
+	ln -s $CDIR/.tmux.conf $HOME/.tmux.conf
 }
 
 zsh_conf() {
@@ -37,9 +38,9 @@ zsh_conf() {
 		mkdir $HOME/.config/zsh
 	fi
 	
-	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.config/zsh/.zshrc
-	ln -s $HOME/Dot-file-ubuntu-debian/.zshenv $HOME/.zshenv
-	ln -s $HOME/Dot-file-ubuntu-debian/.profile $HOME/.profile
+	ln -s $CDIR/.zshrc $HOME/.config/zsh/.zshrc
+	ln -s $CDIR/.zshenv $HOME/.zshenv
+	ln -s $CDIR/.profile $HOME/.profile
 
 	#install oh my zsh
 	if [ ! -d ~/.config/oh-my-zsh ]
@@ -56,7 +57,7 @@ zsh_conf() {
 case $DIST in 
 	"kali"|"pop") install $DIST;;
 	"conf") cd $HOME && vim_conf && zsh_conf;;
-	"vim") vim_conf;;
-	"zsh") zsh_conf;;
+	"vim") cd $HOME && vim_conf;;
+	"zsh") cd $HOME zsh_conf;;
 	"*") echo "error option not defined" ;;
 esac
