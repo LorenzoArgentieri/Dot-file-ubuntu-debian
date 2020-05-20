@@ -28,6 +28,7 @@ vim_conf() {
 	fi
 
 	ln -s $HOME/Dot-file-ubuntu-debian/vimrc $HOME/.config/vim/vimrc
+	ln -s $HOME/Dot-file-ubuntu-debian/.tmux.conf $HOME/.tmux.conf
 }
 
 zsh_conf() {
@@ -37,7 +38,7 @@ zsh_conf() {
 	fi
 	
 	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.config/zsh/.zshrc
-	ln -s $HOME/Dot-file-ubuntu-debian/.zshrc $HOME/.zshenv
+	ln -s $HOME/Dot-file-ubuntu-debian/.zshenv $HOME/.zshenv
 	ln -s $HOME/Dot-file-ubuntu-debian/.profile $HOME/.profile
 
 	#install oh my zsh
@@ -55,5 +56,7 @@ zsh_conf() {
 case $DIST in 
 	"kali"|"pop") install $DIST;;
 	"conf") cd $HOME && vim_conf && zsh_conf;;
+	"vim") vim_conf;;
+	"zsh") zsh_conf;;
 	"*") echo "error option not defined" ;;
 esac

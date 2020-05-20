@@ -15,6 +15,7 @@ Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py' }
 Plug 'davidhalter/jedi-vim', {'for' : ['python','python2','python3']}
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 " }}}
 
@@ -136,4 +137,12 @@ augroup vim_files
 		\| vnoremap <leader>ex :<c-u>@*<cr> 
 		\| onoremap inmk :<c-u>exe "norm! ?\\\"\\s.*-\\{10}\r/\\([:alnum:]\\\|\\s\\)\\{1}\ri\s\ev/-\\{10}\rh"<cr>
 augroup END
+" }}}
+
+" tmux conf ---------- {{{
+let g:tmux_navigator_no_mappings=1
+nnoremap <silent> <C-W>h  :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-W>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-W>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-W>l :TmuxNavigateRight<cr>
 " }}}
