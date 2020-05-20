@@ -29,9 +29,16 @@ vim_conf() {
 	fi
 
 	ln -s $CDIR/vimrc $HOME/.config/vim/vimrc
-	ln -s $CDIR/.tmux.conf $HOME/.tmux.conf
 }
 
+tmux_conf() {
+	if [ ! -d $HOME/.config/tmux ]
+		then
+		mkdir $HOME/.config/tmux
+		ln -s $CDIR/.tmux.conf $HOME/.config/tmux/tmux.conf
+		git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
+	fi
+}
 zsh_conf() {
 	if [ ! -d $HOME/.config/zsh ]
 	then
@@ -59,8 +66,9 @@ zsh_conf() {
 
 case $DIST in 
 	"kali"|"pop") install $DIST;;
-	"conf") cd $HOME && vim_conf && zsh_conf;;
+	"conf") cd $HOME && vim_conf && zsh_conf && tmux_conf;;
 	"vim") cd $HOME && vim_conf;;
 	"zsh") cd $HOME && zsh_conf;;
+	"tmux") cd $HOME && tmux_conf;;
 	"*") echo "error option not defined" ;;
 esac
