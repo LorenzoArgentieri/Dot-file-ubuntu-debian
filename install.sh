@@ -22,7 +22,7 @@ vim_conf() {
 		mkdir $HOME/.config/vim
 	fi
 
-	if [ ! -f ~/.vim/autoload/plug.vim ]
+	if [ ! -f $HOME/.vim/autoload/plug.vim ]
 		then 
 		plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 		curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs ${plug_url};
@@ -43,11 +43,14 @@ zsh_conf() {
 	ln -s $CDIR/.profile $HOME/.profile
 
 	#install oh my zsh
-	if [ ! -d ~/.config/oh-my-zsh ]
+	if [ ! -d $HOME/.config/oh-my-zsh ]
 		then
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && \
 		chsh -s $(which zsh);
-		mv $HOME/.oh-my-zsh $HOME/.config/oh-my-zsh
+		if [ -d $HOME/.oh-my-zsh ]
+			then
+			mv $HOME/.oh-my-zsh $HOME/.config/oh-my-zsh;
+		fi
 		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.config/oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 		git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.config/oh-my-zsh/custom}/plugins/zsh-autosuggestions
 		git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CUSTOM:-$HOME/.config/oh-my-zsh/custom}/plugins/zsh-history-substring-search
@@ -58,6 +61,6 @@ case $DIST in
 	"kali"|"pop") install $DIST;;
 	"conf") cd $HOME && vim_conf && zsh_conf;;
 	"vim") cd $HOME && vim_conf;;
-	"zsh") cd $HOME zsh_conf;;
+	"zsh") cd $HOME && zsh_conf;;
 	"*") echo "error option not defined" ;;
 esac
