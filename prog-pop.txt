@@ -41,6 +41,7 @@ vim-python-jedi
 virtualbox
 vlc
 wget
+xclip
 xxd
 zathura
 zathura-cb

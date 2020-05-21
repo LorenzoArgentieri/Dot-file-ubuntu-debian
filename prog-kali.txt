@@ -17,6 +17,7 @@ vim-doc
 vim-athena
 vim-python-jedi
 wget
+xclip
 zathura
 zathura-cb
 zathura-djvu
