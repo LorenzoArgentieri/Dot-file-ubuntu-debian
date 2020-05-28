@@ -1,3 +1,4 @@
+set encoding=UTF-8
 " make vim xdg base dirs compliance ---------- {{{
 set nocompatible
 set undodir=$XDG_CACHE_HOME/vim
@@ -83,7 +84,6 @@ augroup python_files
 		\| setlocal textwidth=79
 		\| setlocal autoindent
 		\| setlocal fileformat=unix
-		\| setlocal encoding=utf-8
 
 	" add virtualenv support
 	au BufNewFile,BufRead *.py,*.pyw
