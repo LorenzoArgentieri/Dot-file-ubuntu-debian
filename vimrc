@@ -86,15 +86,15 @@ augroup python_files
 		\| setlocal fileformat=unix
 
 	" add virtualenv support
-	au BufNewFile,BufRead *.py,*.pyw
-		\ python3 << EOF 
-		\ import os
-		\ import sys
-		\ if 'VIRTUAL_ENV' in os.environ:
-		\ 	project_base_dir= os.eviron['VIRTUAL_ENV']
-		\ 	activate_this = os.path.join(project_base_dir, 'bin/active_this.py')
-		\ 	execfile(activate_this, dict(__file__=activate_this))
-		\ EOF
+"	au BufNewFile,BufRead *.py,*.pyw
+"		\ python3 << EOF 
+"		\ import os
+"		\ import sys
+"		\ if 'VIRTUAL_ENV' in os.environ:
+"		\	 project_base_dir= os.eviron['VIRTUAL_ENV']
+"		\ 	 activate_this = os.path.join(project_base_dir, 'bin/active_this.py')
+"		\ 	 execfile(activate_this, dict(__file__=activate_this))
+"		\EOF
 augroup END
 " }}}
 
