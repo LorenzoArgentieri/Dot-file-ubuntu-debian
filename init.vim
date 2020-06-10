@@ -11,6 +11,7 @@ call plug#end()
 " general setting ---------- {{{
 filetype plugin on
 syntax on
+colorscheme hyper
 set textwidth=80
 set number
 set relativenumber
@@ -120,8 +121,25 @@ augroup END
 
 " tmux conf ---------- {{{
 let g:tmux_navigator_no_mappings=1
-nnoremap <silent> <C-W>h  :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-W>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-W>j :TmuxNavigateDown<cr>
 nnoremap <silent> <C-W>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-W>l :TmuxNavigateRight<cr>
 " }}}
+
+" coc conf ---------- {{{
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n> ":
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+" }}}
+
+nmap <leader>rn <Plug>(coc-rename)

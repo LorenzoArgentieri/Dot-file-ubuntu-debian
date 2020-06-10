@@ -41,6 +41,10 @@ nvim_conf() {
 	fi
 
 	ln -s $CDIR/init.vim $HOME/.config/nvim/init.vim
+	ln -s $CDIR/colors $HOME/.config/nvim/colors
+	nvim --headless +PlugInstall +qa
+	nvim --headless "CocInstall -sync coc-marketplace \
+		coc-python coc-vimlsp coc-vimtex coc-json|qa"
 }
 
 tmux_conf() {
