@@ -19,9 +19,7 @@ ripgrep
 terminator
 tmux
 tree
-vim-athena
 vim-doc
-vim-python-jedi
 wget
 xclip
 zathura

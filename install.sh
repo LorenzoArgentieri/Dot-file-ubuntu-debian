@@ -26,21 +26,21 @@ install() {
 	sudo apt-get install -y nodejs
 }
 
-vim_conf() {
+nvim_conf() {
 	
-	#vim conf install
-	if [ ! -d $HOME/.config/vim ]
+	#nvim conf install
+	if [ ! -d $HOME/.config/nvim ]
 		then
-		mkdir $HOME/.config/vim
+		mkdir $HOME/.config/nvim
 	fi
 
-	if [ ! -f $HOME/.vim/autoload/plug.vim ]
+	if [ ! -f $HOME/.local/share/nvim/autoload/plug.vim ]
 		then 
 		plug_url="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-		curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs ${plug_url};
+		curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs ${plug_url};
 	fi
 
-	ln -s $CDIR/vimrc $HOME/.config/vim/vimrc
+	ln -s $CDIR/init.vim $HOME/.config/nvim/init.vim
 }
 
 tmux_conf() {
@@ -86,8 +86,8 @@ zsh_conf() {
 
 case $DIST in 
 	"install") install;;
-	"conf") cd $HOME && vim_conf && zsh_conf && tmux_conf;;
-	"vim") cd $HOME && vim_conf;;
+	"conf") cd $HOME && nvim_conf && zsh_conf && tmux_conf;;
+	"nvim") cd $HOME && nvim_conf;;
 	"zsh") cd $HOME && zsh_conf;;
 	"tmux") cd $HOME && tmux_conf;;
 	"*") echo "error option not defined" ;;

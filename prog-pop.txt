@@ -37,9 +37,7 @@ transmission
 tree
 unrar
 vifm
-vim-athena
 vim-doc
-vim-python-jedi
 virtualbox
 vlc
 wget

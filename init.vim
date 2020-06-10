@@ -1,22 +1,10 @@
-set encoding=UTF-8
-" make vim xdg base dirs compliance ---------- {{{
-set nocompatible
-set undodir=$XDG_CACHE_HOME/vim
-set directory=$XDG_CACHE_HOME/vim,~/,/tmp
-set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
-set viminfo+=n/home/lorenzo/.cache/vim/viminfo
-set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
-let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
-" }}}
-
 " plugin conf---------- {{{
 call plug#begin('~/.config/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py' }
-Plug 'davidhalter/jedi-vim', {'for' : ['python','python2','python3']}
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " }}}
 
@@ -53,18 +41,11 @@ augroup END
 let g:python3_host_prog = "/usr/bin/python3"
 let g:python_host_prog = "/usr/bin/python2"
 
-" ycm config
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_python_binary_path='python3'
-
 " latex filetype
 let g:tex_flavor = 'latex'
 let g:vimtex_syntax_enabled = 0
 let g:vimtex_fold_enabled= 0
 let g:vimtex_indent_enabled= 0
-if !exists('g:ycm_semantic_triggers')
-	let g:ycm_semantic_triggers = {}
-endif
 " }}}
 
 " python config files ---------- {{{
@@ -120,7 +101,6 @@ augroup latex_files
 	au Filetype plaintex,tex
 		\ filetype plugin indent on
 		\| syntax on
-		\| let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 		\| let g:vimtex_view_general_viewer= 'zathura'
 		\| let g:vimtex_view_method= 'zathura'
 		
