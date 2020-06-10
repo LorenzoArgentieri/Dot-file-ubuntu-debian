@@ -29,3 +29,4 @@ zathura-pdf-poppler
 zathura-ps
 zsh
 zsh-doc
+pandoc

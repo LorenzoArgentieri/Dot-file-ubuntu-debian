@@ -1,5 +1,5 @@
 " plugin conf {{{
-call plug#begin('~/.config/vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
@@ -113,7 +113,7 @@ augroup vim_files
 	au!
 	au Filetype vim
 		\ setlocal foldmethod=marker
-		\| vnoremap <leader>mk <Esc>`<O"<Esc>A<space><Esc>3A{<Esc>`>o"<Esc>A<space><Esc>3A}<Esc>
+		\| vnoremap <leader>mk <Esc>`<O"<Esc>A<space><space><Esc>3A{<Esc>`>o"<Esc>A<space><Esc>3A}<Esc>
 		\| vnoremap <leader>ex :<c-u>@*<cr> 
 		\| onoremap inmk :<c-u>exe "norm! ?^\\\"\\s.*\\s\{\\{3}\r2lvt{hi"<cr>
 augroup END
@@ -143,3 +143,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <leader>rn <Plug>(coc-rename)
 " }}}
 
+" markdown preview conf {{{
+let g:md_pdf_viewer='evince'
+let maplocalleader="\\"
+nnoremap <silent> <localleader>cc :StartMdPreview
+nnoremap <silent> <localleader>sc :StopMdPreview
+" }}}
