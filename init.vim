@@ -1,4 +1,4 @@
-" plugin conf---------- {{{
+" plugin conf {{{
 call plug#begin('~/.config/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
@@ -8,7 +8,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " }}}
 
-" general setting ---------- {{{
+" general conf {{{
 filetype plugin on
 syntax on
 colorscheme hyper
@@ -21,13 +21,13 @@ set shiftwidth=4
 set noexpandtab
 let mapleader=","
 inoremap jk <Esc>
-" status line conf ---------- {{{
+" status conf {{{
 	set laststatus=2
 	set statusline=%.20F
 	set statusline+=%=
 	set statusline+=%l,%c
 " }}}
-" search conf ---------- {{{
+" search conf {{{
 set incsearch
 augroup vimrc-incsearch-highlight
   autocmd!
@@ -37,7 +37,7 @@ augroup END
 " }}}
 " }}}
 
-" global variable settings---------- {{{
+" global variables {{{
 " set pyhton path
 let g:python3_host_prog = "/usr/bin/python3"
 let g:python_host_prog = "/usr/bin/python2"
@@ -49,7 +49,7 @@ let g:vimtex_fold_enabled= 0
 let g:vimtex_indent_enabled= 0
 " }}}
 
-" python config files ---------- {{{
+" python conf {{{
 augroup python_files
 	au!
 	" python config
@@ -66,7 +66,7 @@ augroup python_files
 		\| setlocal autoindent
 		\| setlocal fileformat=unix
 
-	" add virtualenv support
+" add virtualenv support
 "	au BufNewFile,BufRead *.py,*.pyw
 "		\ python3 << EOF 
 "		\ import os
@@ -79,7 +79,7 @@ augroup python_files
 augroup END
 " }}}
 
-" front end web dev ----------- {{{
+" frontend conf {{{
 augroup front_end_files
 	au!
 	au BufNewFile,BufRead *.html,*.css,*.js
@@ -96,7 +96,7 @@ augroup front_end_files
 augroup END
 " }}}
 
-" latex files config ---------- {{{
+" vimlatex conf {{{
 augroup latex_files
 	au!
 	au Filetype plaintex,tex
@@ -108,18 +108,18 @@ augroup latex_files
 augroup END
 " }}}
 
-" vimfile  config ---------- {{{
+" viscript conf {{{
 augroup vim_files
 	au!
 	au Filetype vim
 		\ setlocal foldmethod=marker
-		\| vnoremap <leader>mk <Esc>`<O"<Esc>A<space><Esc>10A-<Esc>A<space><Esc>3A{<Esc>`>o"<Esc>A<space><Esc>3A}<Esc>
+		\| vnoremap <leader>mk <Esc>`<O"<Esc>A<space><Esc>3A{<Esc>`>o"<Esc>A<space><Esc>3A}<Esc>
 		\| vnoremap <leader>ex :<c-u>@*<cr> 
-		\| onoremap inmk :<c-u>exe "norm! ?\\\"\\s.*-\\{10}\r/\\([:alnum:]\\\|\\s\\)\\{1}\ri\s\ev/-\\{10}\rh"<cr>
+		\| onoremap inmk :<c-u>exe "norm! ?^\\\"\\s.*\\s\{\\{3}\r2lvt{hi"<cr>
 augroup END
 " }}}
 
-" tmux conf ---------- {{{
+" tmux conf {{{
 let g:tmux_navigator_no_mappings=1
 nnoremap <silent> <C-W>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-W>j :TmuxNavigateDown<cr>
@@ -127,7 +127,7 @@ nnoremap <silent> <C-W>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-W>l :TmuxNavigateRight<cr>
 " }}}
 
-" coc conf ---------- {{{
+" coc conf {{{
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? "\<C-n> ":
 			\ <SID>check_back_space() ? "\<TAB>" :
@@ -140,6 +140,6 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <c-space> coc#refresh()
+nmap <leader>rn <Plug>(coc-rename)
 " }}}
 
-nmap <leader>rn <Plug>(coc-rename)
