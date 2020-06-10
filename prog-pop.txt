@@ -1,8 +1,9 @@
 axel
+software-properties-common
 build-essential
 clang
-cmake
 curl
+cmake
 deja-dup
 firefox
 flameshot

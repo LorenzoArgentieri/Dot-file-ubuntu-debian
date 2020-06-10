@@ -1,11 +1,14 @@
+axel
 build-essential
+clang
 cmake
 curl 
+software-properties-common
 feh
 fzf
+gobuster
 i3
-nodejs
-npm
+neovim
 p7zip
 p7zip-full
 p7zip-rar

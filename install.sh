@@ -1,17 +1,29 @@
 #!/usr/bin/bash
 set -e
 
-DIST=$1
+if [ -f /etc/os-release ];
+then
+	. /etc/os-release
+fi
 CDIR=$PWD
-
+DIST=$1
 install() {
-	case $1 in
-		"pop") PROGS="./prog-pop.txt";;
-		"kali") PROGS="./prog-kali.txt";;
-		*) echo "Error option not valid";;
+	case $ID in
+		"pop") 
+			PROGS="./prog-pop.txt"
+			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_14.x |sudo -E bash -"
+			;;
+		"kali") 
+			PROGS="./prog-kali.txt"
+			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_14.x |sudo bash -"
+			;;
+		*) echo "Distribution not supported";;
 	esac
+
 	sudo apt-get -y update \
 	&& sudo apt-get -y install $(cat $PROGS );
+	eval $NODE_DIST_COMMAND
+	sudo apt-get install -y nodejs
 }
 
 vim_conf() {
@@ -43,10 +55,18 @@ zsh_conf() {
 	if [ ! -d $HOME/.config/zsh ]
 	then
 		mkdir $HOME/.config/zsh
+	fi	
+	if [ -f $HOME/.zshenv ];
+	then
+		rm $HOME/.zshenv
 	fi
-	
-	ln -s $CDIR/.zshrc $HOME/.config/zsh/.zshrc
+	if [ -f $HOME/.profile ];
+	then
+		rm $HOME/.profile
+	fi
+
 	ln -s $CDIR/.zshenv $HOME/.zshenv
+	ln -s $CDIR/.zshrc $HOME/.config/zsh/.zshrc
 	ln -s $CDIR/.profile $HOME/.profile
 
 	#install oh my zsh
@@ -65,7 +85,7 @@ zsh_conf() {
 }
 
 case $DIST in 
-	"kali"|"pop") install $DIST;;
+	"install") install;;
 	"conf") cd $HOME && vim_conf && zsh_conf && tmux_conf;;
 	"vim") cd $HOME && vim_conf;;
 	"zsh") cd $HOME && zsh_conf;;

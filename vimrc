@@ -32,21 +32,20 @@ set shiftwidth=4
 set noexpandtab
 let mapleader=","
 inoremap jk <Esc>
-	" status line conf ---------- {{{
-		set laststatus=2
-		set statusline=%.20F
-		set statusline+=%=
-		set statusline+=%l,%c
-	" }}}
-	" search conf ---------- {{{
-	set incsearch
-	augroup vimrc-incsearch-highlight
-	  autocmd!
-	  autocmd CmdlineEnter /,\? :set hlsearch
-	  autocmd CmdlineLeave /,\? :set nohlsearch
-	augroup END
-	" }}}
-
+" status line conf ---------- {{{
+	set laststatus=2
+	set statusline=%.20F
+	set statusline+=%=
+	set statusline+=%l,%c
+" }}}
+" search conf ---------- {{{
+set incsearch
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+" }}}
 " }}}
 
 " global variable settings---------- {{{
