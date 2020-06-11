@@ -142,10 +142,3 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 nmap <leader>rn <Plug>(coc-rename)
 " }}}
-
-" markdown preview conf {{{
-let g:md_pdf_viewer='evince'
-let maplocalleader="\\"
-nnoremap <silent> <localleader>cc :StartMdPreview
-nnoremap <silent> <localleader>sc :StopMdPreview
-" }}}

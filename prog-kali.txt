@@ -1,4 +1,5 @@
 axel
+flameshot
 build-essential
 clang
 cmake

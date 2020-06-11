@@ -17,7 +17,9 @@ install() {
 			PROGS="./prog-kali.txt"
 			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_14.x |sudo bash -"
 			;;
-		*) echo "Distribution not supported";;
+		*) echo "Distribution not supported"
+			exit
+			;;
 	esac
 
 	sudo apt-get -y update \
@@ -88,11 +90,24 @@ zsh_conf() {
 	fi
 }
 
+i3_conf() {
+	if [ -d $HOME/.config/i3 ]; then
+		if [ -f $HOME/.config/i3/config ];then
+			rm $HOME/.config/i3/config
+		fi
+	else
+		mkdir $HOME/.config/i3
+	fi
+	ls -s $CDIR/config $HOME/,config/i3/config
+}
 case $DIST in 
 	"install") install;;
-	"conf") cd $HOME && nvim_conf && zsh_conf && tmux_conf;;
+	"conf") cd $HOME && nvim_conf && zsh_conf && tmux_conf && i3_conf;;
 	"nvim") cd $HOME && nvim_conf;;
 	"zsh") cd $HOME && zsh_conf;;
 	"tmux") cd $HOME && tmux_conf;;
-	"*") echo "error option not defined" ;;
+	"i3") cd $HOME && i3_conf;;
+	"*") echo "error option not defined" 
+		exit
+		;;
 esac
