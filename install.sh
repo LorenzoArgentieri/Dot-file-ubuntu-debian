@@ -102,7 +102,7 @@ i3_conf() {
 }
 case $DIST in 
 	"install") install;;
-	"conf") cd $HOME && nvim_conf && zsh_conf && tmux_conf && i3_conf;;
+	"conf") cd $HOME && nvim_conf && zsh_conf && tmux_conf;;
 	"nvim") cd $HOME && nvim_conf;;
 	"zsh") cd $HOME && zsh_conf;;
 	"tmux") cd $HOME && tmux_conf;;
