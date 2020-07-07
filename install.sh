@@ -92,13 +92,13 @@ zsh_conf() {
 
 i3_conf() {
 	if [ -d $HOME/.config/i3 ]; then
-		if [ -f $HOME/.config/i3/config ];then
+		if [ -f $HOME/.config/i3/config ]; then
 			rm $HOME/.config/i3/config
 		fi
 	else
 		mkdir $HOME/.config/i3
 	fi
-	ls -s $CDIR/config $HOME/,config/i3/config
+	ln -s $CDIR/config $HOME/.config/i3/config
 }
 case $DIST in 
 	"install") install;;
