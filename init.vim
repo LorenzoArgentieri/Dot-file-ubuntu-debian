@@ -5,6 +5,8 @@ Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 " }}}
 

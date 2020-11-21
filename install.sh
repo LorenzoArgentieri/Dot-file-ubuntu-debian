@@ -11,11 +11,11 @@ install() {
 	case $ID in
 		"pop") 
 			PROGS="./prog-pop.txt"
-			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_14.x |sudo -E bash -"
+			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_15.x |sudo -E bash -"
 			;;
 		"kali") 
 			PROGS="./prog-kali.txt"
-			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_14.x |sudo bash -"
+			NODE_DIST_COMMAND="curl -sL https://deb.nodesource.com/setup_15.x |sudo bash -"
 			;;
 		*) echo "Distribution not supported"
 			exit
@@ -45,8 +45,8 @@ nvim_conf() {
 	ln -s $CDIR/init.vim $HOME/.config/nvim/init.vim
 	ln -s $CDIR/colors $HOME/.config/nvim/colors
 	nvim --headless +PlugInstall +qa
-	nvim --headless "CocInstall -sync coc-marketplace \
-		coc-python coc-vimlsp coc-vimtex coc-json|qa"
+	#nvim --headless "CocInstall -sync coc-marketplace \
+	#	coc-python coc-vimlsp coc-vimtex coc-json|qa"
 }
 
 tmux_conf() {

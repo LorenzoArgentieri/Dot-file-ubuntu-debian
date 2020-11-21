@@ -19,3 +19,7 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 export VISUAL='nvim'
+
+export WINHOME="/mnt/c/Users/argentierila/Documents/"
+export TESI="/mnt/c/Users/argentierila/Documents/Project_Work/mdm-art/art"
+

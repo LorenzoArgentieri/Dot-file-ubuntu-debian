@@ -1,4 +1,5 @@
 axel
+universal-ctags
 flameshot
 build-essential
 clang
