@@ -26,6 +26,7 @@ install() {
 	&& sudo apt-get -y install $(cat $PROGS );
 	eval $NODE_DIST_COMMAND
 	sudo apt-get install -y nodejs
+	curl -fsSL https://starship.rs/install.sh | bash
 }
 
 nvim_conf() {

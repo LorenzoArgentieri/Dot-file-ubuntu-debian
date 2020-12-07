@@ -1,12 +1,16 @@
 " plugin conf {{{
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/indentpython.vim' , { 'for' : ['python','python2','python3']}
 Plug 'lervag/vimtex' , {'for':['tex','plaintex']}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'liuchengxu/vista.vim'
+Plug 'dense-analysis/ale'
+Plug 'puremourning/vimspector'
+Plug  'szw/vim-maximizer'
 call plug#end()
 " }}}
 
@@ -21,7 +25,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
-let mapleader=","
+let mapleader=" "
 inoremap jk <Esc>
 " status conf {{{
 	set laststatus=2
@@ -39,15 +43,15 @@ augroup END
 " }}}
 
 " nerdtree like netrw conf {{{
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-augroup ProjectDrawer
-	autocmd!
-	autocmd VimEnter * :Vexplore
-augroup END
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 25
+" augroup ProjectDrawer
+	" autocmd!
+	" autocmd VimEnter * :Vexplore
+" augroup END
 " }}}
 
 " }}}
@@ -62,6 +66,8 @@ let g:tex_flavor = 'latex'
 let g:vimtex_syntax_enabled = 0
 let g:vimtex_fold_enabled= 0
 let g:vimtex_indent_enabled= 0
+
+
 " }}}
 
 " python conf {{{
@@ -76,14 +82,16 @@ augroup python_files
 		\| setlocal tabstop=4
 		\| setlocal softtabstop=4
 		\| setlocal shiftwidth=4
-		\| setlocal noexpandtab
+		\| setlocal expandtab
 		\| setlocal textwidth=79
 		\| setlocal autoindent
 		\| setlocal fileformat=unix
-
+		\| let b:ale_linters = ['autopep8',"yapf"]
+		\| let b:ale_fixers = ['autopep8',"yapf","remove_trailing_lines","trim_whitespace"]
+		\| let b:ale_warn_about_trailing_whitespace = 1
 " add virtualenv support
 "	au BufNewFile,BufRead *.py,*.pyw
-"		\ python3 << EOF 
+"		\ python3 << EOF
 "		\ import os
 "		\ import sys
 "		\ if 'VIRTUAL_ENV' in os.environ:
@@ -92,6 +100,19 @@ augroup python_files
 "		\ 	 execfile(activate_this, dict(__file__=activate_this))
 "		\EOF
 augroup END
+" }}}
+
+"  ale config {{{
+let b:ale_linters = {
+\	'javascript' : ['eslint'],
+\	'python' : ['autopep8','yapf']
+\}
+
+let g:ale_fixers = {
+\	'javascript' : ['eslint','prettier'],
+\	'python' : ['autopep8','yapf'],
+\	'*':['remove_trailing_lines','trim_whitespace']
+\}
 " }}}
 
 " frontend conf {{{
@@ -105,7 +126,8 @@ augroup front_end_files
 		\| setlocal foldmethod=indent
 		\| setlocal foldlevelstart=2
 		\| setlocal noexpandtab
-
+		\| let b:ale_linters = ["eslint","prettier"]
+		\| let b:ale_fixers = ["eslint","prettier","remove_trailing_lines","trim_whitespace"]
 	"let g:prettier#quickfix_enabled = 0
 	"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 augroup END
@@ -156,4 +178,46 @@ endfunction
 
 inoremap <silent><expr> <c-space> coc#refresh()
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-refernces)
+" }}}
+
+" vimspector conf {{{
+"let g:vimspector_enable_mappings = 'HUMAN'
+fun! GotoWindow(id)
+    call win_gotoid(a:id)
+    MaximizerToggle
+endfun
+
+" Debugger remaps
+nnoremap <leader>mx :MaximizerToggle!<CR>
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <leader>de :call vimspector#Reset()<CR>
+
+nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>dr <Plug>VimspectorRestart
+nmap <leader>dp <Plug>VimspectorPause
+nnoremap <leader>d<space> :call vimspector#Continue()<CR>
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
+" <Plug>VimspectorStop
+" <Plug>VimspectorPause
+" <Plug>VimspectorAddFunctionBreakpoint
+" }}
+
+" FZF conf {{{
+nnoremap <C-p> :GFiles<CR>
 " }}}
