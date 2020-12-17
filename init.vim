@@ -11,6 +11,10 @@ Plug 'liuchengxu/vista.vim'
 Plug 'dense-analysis/ale'
 Plug 'puremourning/vimspector'
 Plug  'szw/vim-maximizer'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
 call plug#end()
 " }}}
 
@@ -220,4 +224,14 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " FZF conf {{{
 nnoremap <C-p> :GFiles<CR>
+" }}}
+
+" Git conf {{{
+let g:signify_sing_add ='+'
+let g:signify_sing_delete_first_line ='-'
+let g:signify_sing_delete ='_'
+let g:signify_sing_change ='~'
+
+let g:signify_sing_show_count = 0
+let g:signify_sing_show_text = 1
 " }}}
