@@ -227,13 +227,11 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
  " <Plug>VimspectorAddFunctionBreakpoint
 " }}}
 
-
 " FZF conf {{{
 nnoremap <C-p> :GFiles<CR>
 let g:fzf_layout = { 'window':{ 'width':0.8 , 'height':0.8 }}
 let $FZF_DEFAULT_OPTS='--reverse'
 " }}}
-
 
 " Git conf {{{
 let g:signify_sing_add ='+'
@@ -247,6 +245,5 @@ let g:signify_sing_show_text = 1
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gs :G<CR>
-nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gc :GBranches<CR>
 " }}}
-
