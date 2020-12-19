@@ -18,6 +18,7 @@ Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'stsewd/fzf-checkout.vim'
 call plug#end()
 " }}}
 
@@ -229,6 +230,8 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " FZF conf {{{
 nnoremap <C-p> :GFiles<CR>
+let g:fzf_layout = { 'window':{ 'width':0.8 , 'height':0.8 }}
+let $FZF_DEFAULT_OPTS='--reverse'
 " }}}
 
 
@@ -241,8 +244,9 @@ let g:signify_sing_change ='~'
 let g:signify_sing_show_count = 0
 let g:signify_sing_show_text = 1
 
-nmap <leader>gf :diffget //3<CR>
-nmap <leader>gj :diffget //2<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
 nmap <leader>gs :G<CR>
+nnoremap <leader>gc :GCheckout<CR>
 " }}}
 
