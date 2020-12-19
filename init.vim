@@ -15,13 +15,17 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 call plug#end()
 " }}}
 
 " general conf {{{
 filetype plugin on
 syntax on
-colorscheme hyper
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 set textwidth=80
 set number
 set relativenumber
@@ -187,13 +191,13 @@ nmap <leader>gr <Plug>(coc-refernces)
 " }}}
 
 " vimspector conf {{{
-"let g:vimspector_enable_mappings = 'HUMAN'
+ "let g:vimspector_enable_mappings = 'HUMAN'
 fun! GotoWindow(id)
     call win_gotoid(a:id)
     MaximizerToggle
 endfun
 
-" Debugger remaps
+ " Debugger remaps
 nnoremap <leader>mx :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
 nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
@@ -217,14 +221,16 @@ nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
-" <Plug>VimspectorStop
-" <Plug>VimspectorPause
-" <Plug>VimspectorAddFunctionBreakpoint
-" }}
+ " <Plug>VimspectorStop
+ " <Plug>VimspectorPause
+ " <Plug>VimspectorAddFunctionBreakpoint
+" }}}
+
 
 " FZF conf {{{
 nnoremap <C-p> :GFiles<CR>
 " }}}
+
 
 " Git conf {{{
 let g:signify_sing_add ='+'
@@ -234,4 +240,9 @@ let g:signify_sing_change ='~'
 
 let g:signify_sing_show_count = 0
 let g:signify_sing_show_text = 1
+
+nmap <leader>gf :diffget //3<CR>
+nmap <leader>gj :diffget //2<CR>
+nmap <leader>gs :G<CR>
 " }}}
+
