@@ -21,5 +21,5 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 export WINHOME="/mnt/c/Users/argentierila/Documents/"
-export TESI="/mnt/c/Users/argentierila/Documents/Project_Work/mdm-art/art"
+export TESI="/mnt/c/Users/argentierila/OneDrive - NTT DATA EMEA/Documenti/Project_Work/mdm-art/art"
 

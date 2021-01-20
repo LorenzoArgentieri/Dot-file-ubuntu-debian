@@ -58,6 +58,7 @@ tmux_conf() {
 		git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 	fi
 }
+
 zsh_conf() {
 	if [ ! -d $HOME/.config/zsh ]
 	then

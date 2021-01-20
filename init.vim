@@ -25,10 +25,12 @@ call plug#end()
 " general conf {{{
 filetype plugin on
 syntax on
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 set textwidth=80
 set number
+set diffopt=internal,filler,vertical
 set relativenumber
 set tabstop=4
 set softtabstop=4
